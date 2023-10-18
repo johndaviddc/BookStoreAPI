@@ -2,6 +2,8 @@ package dave.dev.bookstore.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 public class Book {
     @Id
