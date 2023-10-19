@@ -37,4 +37,13 @@ public class AuthorController {
         Author createdAuthor = authorService.createAuthor(author);
         return ResponseEntity.status(201).body(createdAuthor);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Author> updateAuthor(@PathVariable Long id, @RequestBody Author updatedAuthor) {
+        Author author = authorService.updateAuthor(id, updatedAuthor);
+        if (author != null) {
+            return ResponseEntity.ok(author);
+        }
+        return ResponseEntity.notFound().build();
+    }
 }
