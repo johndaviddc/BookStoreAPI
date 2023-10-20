@@ -37,4 +37,13 @@ public class ReviewController {
         Review createdReview = reviewService.createReview(review);
         return ResponseEntity.status(201).body(createdReview);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Review> updateReview(@PathVariable Long id, @RequestBody Review updatedReview) {
+        Review review = reviewService.updateReview(id, updatedReview);
+        if (review != null) {
+            return ResponseEntity.ok(review);
+        }
+        return ResponseEntity.notFound().build();
+    }
 }
